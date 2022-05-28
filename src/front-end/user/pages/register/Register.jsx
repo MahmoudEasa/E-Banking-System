@@ -1,6 +1,6 @@
 import "./register.css";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -42,29 +42,42 @@ const Register = () => {
     //   });
     // });
 
-    axios.post("http://localhost:5000/users", {
-      ...data,
-      isAdmin: false,
-      access: "underReview",
-    });
+    axios
+      .post("http://localhost:5000/users", {
+        ...data,
+        isAdmin: false,
+        accounts: [
+          {
+            accountNumber: 0,
+            currentbalance: 0,
+          },
+        ],
+        access: "underReview",
+      })
+      .then(() => {
+        // Send Email
+        emailjs
+          .sendForm(
+            "service_v5o14cw",
+            "template_bk47lir",
+            form.current,
+            "fLNi1oENc8nSS7JmY"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
 
-    // Send Email
-    emailjs
-      .sendForm(
-        "service_v5o14cw",
-        "template_bk47lir",
-        form.current,
-        "fLNi1oENc8nSS7JmY"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    setOnRegist(true);
+        setOnRegist(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast("Try again");
+      });
   };
 
   return (

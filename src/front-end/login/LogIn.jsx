@@ -1,4 +1,5 @@
 import "./login.css";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -19,9 +20,9 @@ const LogIn = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    // console.log(data);
+  const [id, setId] = useState("");
 
+  const onSubmit = (data) => {
     axios.get("http://localhost:5000/users").then((res) =>
       res.data.map((d) => {
         if (
@@ -35,7 +36,10 @@ const LogIn = () => {
           data.password === d.password &&
           d.isAdmin === false
         ) {
-          navigate("/admin/home", { replace: true });
+          // console.log(d.id);
+          setId(d.id);
+          console.log(id);
+          // navigate("/user/home", { replace: true }, { state: { id } });
         } else {
           toast("You are not registerd!");
         }
@@ -49,7 +53,7 @@ const LogIn = () => {
     <>
       <NavBar type="login" />
       <ToastContainer />
-      <div className="login">
+      <main className="login">
         <div className="welcom">
           <h1>Welcome To Online Banking System</h1>
         </div>
@@ -59,14 +63,13 @@ const LogIn = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">
+                <label htmlFor="email" className="form-label">
                   Email
                 </label>
                 <input
                   type="email"
                   className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                  id="email"
                   {...register("email")}
                 />
               </div>
@@ -77,13 +80,13 @@ const LogIn = () => {
               )}
 
               <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">
+                <label htmlFor="password" className="form-label">
                   Password
                 </label>
                 <input
                   type="password"
                   className="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
                   {...register("password")}
                 />
               </div>
@@ -102,7 +105,7 @@ const LogIn = () => {
             </form>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 };

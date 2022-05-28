@@ -14,15 +14,27 @@
       "phone": "010111111111",
       "password": "sdfadfadf",
       "id": 2,
+      "accounts": [
+        {
+          "accountNumber": 0,
+          "currentbalance": 0
+        }
+      ],
       "access": "underReview",
       "isAdmin": false
     },
     {
-      "email": "mm@cc.com",
+      "email": "user@user.com",
       "name": "mmm",
       "phone": "22222222222222",
-      "password": "44444444444444444",
+      "password": "mm1234",
       "isAdmin": false,
+      "accounts": [
+        {
+          "accountNumber": 0,
+          "currentbalance": 0
+        }
+      ],
       "access": "underReview",
       "id": 4
     }

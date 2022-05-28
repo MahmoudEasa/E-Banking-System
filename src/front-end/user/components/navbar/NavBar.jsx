@@ -1,11 +1,11 @@
 import "./navbar.css";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = ({ type }) => {
   return (
     <div className="navbar">
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg nav-container">
         <div className="container-fluid">
           <div className="navbar-brand logo">
             <i className="fa-solid fa-building-columns"></i>
@@ -29,9 +29,29 @@ const NavBar = ({ type }) => {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link to="/home" className="nav-link" aria-current="page">
+                    <NavLink to="/user/home" className="nav-link">
                       Home
-                    </Link>
+                    </NavLink>
+
+                    <NavLink to="/user/create" className="nav-link">
+                      Create Account
+                    </NavLink>
+
+                    <NavLink to="/user/withdraw" className="nav-link">
+                      Withdraw
+                    </NavLink>
+
+                    <NavLink to="/user/recharging" className="nav-link">
+                      Recharging
+                    </NavLink>
+
+                    <NavLink to="/user/transfer" className="nav-link">
+                      Transfer
+                    </NavLink>
+
+                    <NavLink to="/user/transactions" className="nav-link">
+                      Transactions
+                    </NavLink>
                   </li>
                 </ul>
               </div>
