@@ -1,6 +1,10 @@
-nav {
+.navbar {
   background-color: #2196f3;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
+
 .nav-link {
   color: #fff;
   font-weight: 500;

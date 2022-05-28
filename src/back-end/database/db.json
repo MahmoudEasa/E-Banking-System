@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Mahmoud Easa",
+      "email": "mm@mm.com",
+      "phone": "01011422865",
+      "password": "mm1234",
+      "isAdmin": true
+    },
+    {
+      "email": "mm@bb.com",
+      "name": "Ahmed Easa",
+      "phone": "010111111111",
+      "password": "sdfadfadf",
+      "id": 2,
+      "access": "underReview",
+      "isAdmin": false
+    },
+    {
+      "email": "mm@cc.com",
+      "name": "mmm",
+      "phone": "22222222222222",
+      "password": "44444444444444444",
+      "isAdmin": false,
+      "access": "underReview",
+      "id": 4
+    }
+  ]
+}
